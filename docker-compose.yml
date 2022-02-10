@@ -7,17 +7,15 @@ services:
             context: ./            
             # target: development
             dockerfile: ./Dockerfile
-        command: npm run start:debug
         ports:
-            - 3000
-        environment:
-          HELLO_SERVICE_HOST: '127.0.0.1'
-          HELLO_SERVICE_PORT: 8080
+            - "3001:3000"
+        # environment:
+          # HELLO_SERVICE_HOST: '127.0.0.1'
+          # HELLO_SERVICE_PORT: 8080
         networks:
             - nestjs-network
         volumes:
-            - .:/usr/src/app
-            - /usr/src/app/node_modules
+            - .src:/usr/app
         restart: unless-stopped
 networks:
-    nesjs-network:
+    nestjs-network:

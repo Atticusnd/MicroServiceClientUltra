@@ -1,19 +1,35 @@
-# Start with a Node.js base image that uses Node v13
-FROM node:13
-WORKDIR /usr/src/app
+# FROM node:10 AS builder
+# WORKDIR /usr/app
+# COPY ./package.json ./
+# RUN npm install
+# COPY ./src .
+# RUN npm run build
 
-# Copy the package.json file to the container and install fresh node_modules
-COPY package*.json tsconfig*.json ./
+
+# # Second Stage : Setup command to run your app using lightweight node image
+# FROM node:10-alpine
+# WORKDIR /usr/app
+# COPY --from=builder /usr/app ./
+# EXPOSE 3000
+# CMD ["node", "dist/main"]
+# CMD ["node", "run", "start"]
+
+FROM node:16
+
+# Create app directory
+WORKDIR /usr/app
+
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY package*.json ./
+
 RUN npm install
+# If you are building your code for production
+# RUN npm ci --only=production
 
-# Copy the rest of the application source code to the container
-COPY src/ src/
+# Bundle app source
+COPY . .
 
-# Transpile typescript and bundle the project
-RUN npm run build
-
-# Remove the original src directory (our new compiled source is in the `dist` folder)
-RUN rm -r src
-
-# Assign `npm run start:prod` as the default command to run when booting the container
-CMD ["npm", "run", "start:prod"]
+EXPOSE 3000
+CMD [ "node", "run", "start" ]
