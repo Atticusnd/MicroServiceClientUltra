@@ -5,7 +5,6 @@ import { GameService } from './game.service';
 import { GameModel } from './schema/game.schema';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-
 @Module({
   imports: [
     ConfigModule.forRoot(),
