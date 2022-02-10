@@ -9,12 +9,19 @@ import {
   NotFoundException,
   Put,
   Delete,
+  Inject,
+  Param,
 } from '@nestjs/common';
 import { GameService } from './game.service';
 import { CreateGameDTO } from './dto/game.dto';
+import { ClientProxy } from '@nestjs/microservices';
+
 @Controller('Game')
 export class GameController {
-  constructor(private readonly GameService: GameService) {}
+  constructor(
+    @Inject('HELLO_SERVICE') private client: ClientProxy,
+    private readonly GameService: GameService,
+  ) {}
   @Post('')
   async addCustomer(@Res() res, @Body() CreateGameDTO: CreateGameDTO) {
     const lists = await this.GameService.create(CreateGameDTO);
@@ -55,5 +62,10 @@ export class GameController {
       message: 'Post has been deleted',
       lists,
     });
+  }
+  @Get('/discount')
+  startProcess(@Param('name') name = 'there') {
+    // Forwards the name to our hello service, and returns the results
+    return this.client.send({ cmd: 'hello' }, name);
   }
 }
