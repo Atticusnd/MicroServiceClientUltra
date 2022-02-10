@@ -10,8 +10,8 @@ import {
   Put,
   Delete,
 } from '@nestjs/common';
-import { GameService } from './Game.service';
-import { CreateGameDTO } from './dto/Game.dto';
+import { GameService } from './game.service';
+import { CreateGameDTO } from './dto/game.dto';
 @Controller('Game')
 export class GameController {
   constructor(private readonly GameService: GameService) {}

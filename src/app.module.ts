@@ -8,7 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 @Module({
   imports: [
     MongooseModule.forRoot(
-      'mongodb://<username>:<password>1@ds061711.mlab.com:61711/heroku_7q1xt2kd',
+      'mongodb+srv://atticusfj:2005ct27@cluster0.ru2tc.mongodb.net/ultra?retryWrites=true&w=majority',
     ),
     GameModule,
   ],
