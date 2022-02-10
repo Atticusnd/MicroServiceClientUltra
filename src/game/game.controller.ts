@@ -35,7 +35,7 @@ export class GameController {
     const lists = await this.gameService.findAll();
     return res.status(HttpStatus.OK).json(lists);
   }
-  @Get(':id')
+  @Get('/id/:id')
   async findById(@Res() res, @Param('id') id: string) {
     const lists = await this.gameService.findById(id);
     if (!lists) throw new NotFoundException('Id does not exist!');
@@ -64,8 +64,8 @@ export class GameController {
     });
   }
   @Get('/discount')
-  startProcess(@Param('name') name = 'there') {
-    // Forwards the name to our hello service, and returns the results
-    return this.client.send({ cmd: 'hello' }, name);
+  startProcess() {
+    console.log('Entranding');
+    return this.client.send({ cmd: 'hello' }, 'There');
   }
 }
