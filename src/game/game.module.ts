@@ -21,8 +21,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         ClientProxyFactory.create({
           transport: Transport.TCP,
           options: {
-            host: 'localhost',
-            port: 8080,
+            host: 'nestjs_process',
+            port: 3003,
           },
         }),
     },
