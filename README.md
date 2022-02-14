@@ -35,6 +35,8 @@ This microservice is connected by using [TCP transport](https://docs.nestjs.com/
 ```bash
 $ docker-compose up
 ```
+
+Please also clone and run the [process service](https://github.com/Atticusnd/MicroserviceProcess) 
 ## Installation
 
 ```bash
