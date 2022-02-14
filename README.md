@@ -29,7 +29,12 @@ This microservice is connected by using [TCP transport](https://docs.nestjs.com/
 
 <img width="1470" alt="Screen Shot 2022-02-14 at 12 56 37" src="https://user-images.githubusercontent.com/96081883/153939506-c517a12a-e64a-4248-83e2-8f71f8e06d68.png">
 
+# How to run
+## Using Docker
 
+```bash
+$ docker-compose up
+```
 ## Installation
 
 ```bash
@@ -57,6 +62,4 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Using Docker
 
-``docker-compose up``
