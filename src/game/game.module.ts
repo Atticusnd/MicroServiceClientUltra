@@ -6,6 +6,7 @@ import { GameModel } from './schema/game.schema';
 import { PublisherModel } from './schema/publisher.schema';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import config from '../config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -21,8 +22,8 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         ClientProxyFactory.create({
           transport: Transport.TCP,
           options: {
-            host: 'nestjs_process',
-            port: 3003,
+            host: config.HOST_MS,
+            port: parseInt(config.PORT_MS),
           },
         }),
     },

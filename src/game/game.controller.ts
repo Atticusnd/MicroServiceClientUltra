@@ -65,7 +65,6 @@ export class GameController {
   }
   @Get('/discount')
   startProcess() {
-    console.log('Entranding');
     return this.client.send({ cmd: 'hello' }, 'There');
   }
 }
