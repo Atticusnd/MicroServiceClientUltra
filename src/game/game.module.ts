@@ -6,7 +6,6 @@ import { GameModel } from './schema/game.schema';
 import { PublisherModel } from './schema/publisher.schema';
 import { ClientProxyFactory, Transport } from '@nestjs/microservices';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import config from '../config';
 @Module({
   imports: [
     ConfigModule.forRoot(),
@@ -16,14 +15,14 @@ import config from '../config';
   controllers: [GameController],
   providers: [
     {
-      provide: 'HELLO_SERVICE',
+      provide: 'DISCOUNT_SERVICE',
       inject: [ConfigService],
       useFactory: () =>
         ClientProxyFactory.create({
           transport: Transport.TCP,
           options: {
-            host: config.HOST_MS,
-            port: parseInt(config.PORT_MS),
+            host: process.env.HOST_MS,
+            port: parseInt(process.env.PORT_MS),
           },
         }),
     },

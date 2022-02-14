@@ -25,7 +25,7 @@ To delete a game(by ID):
 
 This microservice is connected by using [TCP transport](https://docs.nestjs.com/microservices/basics)
 
-##Docs you can access to Swagger docs on http:localhost:3000/api 
+## Docs you can access to Swagger docs on http:localhost:3000/api 
 
 <img width="1470" alt="Screen Shot 2022-02-14 at 12 56 37" src="https://user-images.githubusercontent.com/96081883/153939506-c517a12a-e64a-4248-83e2-8f71f8e06d68.png">
 

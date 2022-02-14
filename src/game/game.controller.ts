@@ -11,6 +11,7 @@ import {
   Delete,
   Inject,
   Param,
+  Logger,
 } from '@nestjs/common';
 import { GameService } from './game.service';
 import { CreateGameDTO } from './dto/game.dto';
@@ -19,7 +20,7 @@ import { ClientProxy } from '@nestjs/microservices';
 @Controller('Game')
 export class GameController {
   constructor(
-    @Inject('HELLO_SERVICE') private client: ClientProxy,
+    @Inject('DISCOUNT_SERVICE') private client: ClientProxy,
     private readonly gameService: GameService,
   ) {}
   @Post('')
@@ -54,8 +55,8 @@ export class GameController {
       lists,
     });
   }
-  @Delete('')
-  async delete(@Res() res, @Query('id') id: string) {
+  @Delete('/id/:id')
+  async delete(@Res() res, @Param('id') id: string) {
     const lists = await this.gameService.delete(id);
     if (!lists) throw new NotFoundException('Post does not exist');
     return res.status(HttpStatus.OK).json({
@@ -65,6 +66,11 @@ export class GameController {
   }
   @Get('/discount')
   startProcess() {
-    return this.client.send({ cmd: 'hello' }, 'There');
+    try {
+      return this.client.send({ cmd: 'hello' }, 'There');
+    } catch (error) {
+      Logger.error(error);
+      throw new Error(error);
+    }
   }
 }
