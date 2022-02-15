@@ -1,11 +1,11 @@
-FROM node:12.19.0-alpine3.9 AS development
+FROM node:12.19.0-alpine3.9
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY . .
 
 RUN npm install
 
-COPY . .
+EXPOSE 3000
 
-CMD ["node", "run", "start"]
+ENTRYPOINT ["npm", "run", "start"]
