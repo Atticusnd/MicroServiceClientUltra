@@ -1,6 +1,18 @@
+### About solution
+Created a microservice application for a CRUD and a process that is executed on a [different service](https://github.com/Atticusnd/MicroserviceProcess)
+
+# How to run
+## Using Docker
+
+```bash
+$ docker-compose up
+```
+
+Please also clone and run the [process service](https://github.com/Atticusnd/MicroserviceProcess) 
+
 ### This is the client service from Game-Publisher task
 
-I Created an API using NestJS, the CRUD is on `/game` endpoint, You can try with [This postman collection](https://github.com/Atticusnd/MicroServiceClientUltra/blob/main/postman-collection.json) to request the endpoints, examples of the endpoints:
+I Created an API using NestJS, the CRUD is on `/game` endpoint You can try with [This postman collection](https://github.com/Atticusnd/MicroServiceClientUltra/blob/main/postman-collection.json) to request the endpoints, examples of the endpoints:
 
 To Create:
 
@@ -28,40 +40,5 @@ This microservice is connected by using [TCP transport](https://docs.nestjs.com/
 ## Docs you can access to Swagger docs on http:localhost:3000/api 
 
 <img width="1470" alt="Screen Shot 2022-02-14 at 12 56 37" src="https://user-images.githubusercontent.com/96081883/153939506-c517a12a-e64a-4248-83e2-8f71f8e06d68.png">
-
-# How to run
-## Using Docker
-
-```bash
-$ docker-compose up
-```
-
-Please also clone and run the [process service](https://github.com/Atticusnd/MicroserviceProcess) 
-## Installation
-
-```bash
-$ npm install
-```
-
-## Running the app
-
-```bash
-# development
-$ npm run start
-
-```
-
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
-```
 
 
